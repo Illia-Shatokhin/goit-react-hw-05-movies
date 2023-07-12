@@ -18,7 +18,7 @@ export async function getTrending() {
     `${BASE_URL}trending/all/day`,
     options({ language: 'en-US' })
   );
-  return response;
+  return response.data.results;
 }
 
 export async function getSearchMovie(query) {
@@ -26,7 +26,7 @@ export async function getSearchMovie(query) {
     `${BASE_URL}search/movie`,
     options({ query, include_adult: 'false', language: 'en-US', page: '1' })
   );
-  return response;
+  return response.data.results;
 }
 
 export async function getMovieDetails(movieId) {
@@ -34,7 +34,7 @@ export async function getMovieDetails(movieId) {
     `${BASE_URL}movie/${movieId}`,
     options({ language: 'en-US' })
   );
-  return response;
+  return response.data;
 }
 
 export async function getMovieCredits(movieId) {
@@ -42,7 +42,7 @@ export async function getMovieCredits(movieId) {
     `${BASE_URL}movie/${movieId}/credits`,
     options({ language: 'en-US' })
   );
-  return response;
+  return response.data.cast;
 }
 
 export async function getMovieReviews(movieId) {
@@ -50,5 +50,5 @@ export async function getMovieReviews(movieId) {
     `${BASE_URL}movie/${movieId}/reviews`,
     options({ language: 'en-US', page: '1' })
   );
-  return response;
+  return response.data.results;
 }
