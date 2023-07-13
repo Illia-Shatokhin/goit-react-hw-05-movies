@@ -1,6 +1,7 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useEffect, useState } from 'react';
 import { getTrending } from 'services/api';
+import { TrendSection, TrendTitle } from './Home.styled';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -17,9 +18,9 @@ export const Home = () => {
     fetchMovies();
   }, []);
   return (
-    <section>
-      <h2>Today Trending</h2>
+    <TrendSection>
+      <TrendTitle>Today Trending</TrendTitle>
       <MoviesList movies={movies} way="/movies/" />
-    </section>
+    </TrendSection>
   );
 };

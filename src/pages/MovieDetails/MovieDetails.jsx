@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
+import { MiniTitle, Movie, MovieTitle, Text } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   let [movieDetails, setMovieDetails] = useState({});
@@ -19,29 +20,40 @@ export const MovieDetails = () => {
 
   return (
     <section>
-      <img
-        src={
-          movieDetails.poster_path &&
-          `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
-        }
-        alt={movieDetails.title}
-      />
-      <h2>{`${movieDetails.title ? movieDetails.title : 'No title'} (${
-        movieDetails.release_date && movieDetails.release_date.split('-')[0]
-      })`}</h2>
-      <p>{`User score: ${
-        movieDetails.vote_average
-          ? Math.round(movieDetails.vote_average * 10)
-          : 'No score'
-      }%`}</p>
-      <p>Overview</p>
-      <p>{movieDetails.overview ? movieDetails.overview : 'No overview'}</p>
-      <p>Genres</p>
-      <p>
-        {movieDetails.genres && movieDetails.genres.length
-          ? movieDetails.genres.map(genre => genre.name + ', ')
-          : 'No genres'}
-      </p>
+      <Movie>
+        <img
+          src={
+            movieDetails.poster_path &&
+            `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+          }
+          alt={movieDetails.title}
+          width="250"
+          height="375"
+        />
+        <div>
+          <MovieTitle>{`${
+            movieDetails.title ? movieDetails.title : 'No title'
+          } (${
+            movieDetails.release_date && movieDetails.release_date.split('-')[0]
+          })`}</MovieTitle>
+          <Text>{`User score: ${
+            movieDetails.vote_average
+              ? Math.round(movieDetails.vote_average * 10)
+              : 'No score'
+          }%`}</Text>
+          <MiniTitle>Overview</MiniTitle>
+          <Text>
+            {movieDetails.overview ? movieDetails.overview : 'No overview'}
+          </Text>
+          <MiniTitle>Genres</MiniTitle>
+          <Text>
+            {movieDetails.genres && movieDetails.genres.length
+              ? movieDetails.genres.map(genre => genre.name).join(', ')
+              : 'No genres'}
+          </Text>
+        </div>
+      </Movie>
+
       <div>
         <p>Additional information</p>
         <ul>

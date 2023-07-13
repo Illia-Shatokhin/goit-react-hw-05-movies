@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Item, MovieLink } from './MovieItem.styled';
 
 export const MovieItem = ({ id, title, name, way }) => {
   return (
-    <li>
-      <Link to={`${way}${id}`}>{title || name}</Link>
-    </li>
+    <Item>
+      <MovieLink to={`${way}${id}`}>{title || name}</MovieLink>
+    </Item>
   );
 };
