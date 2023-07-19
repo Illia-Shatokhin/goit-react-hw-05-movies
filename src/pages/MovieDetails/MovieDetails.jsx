@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { MiniTitle, Movie, MovieTitle, Text } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const location = useLocation();
 
   const backLinkHref = useRef(location.state?.from ?? '/');
@@ -80,3 +80,5 @@ export const MovieDetails = () => {
     </section>
   );
 };
+
+export default MovieDetails;

@@ -4,7 +4,7 @@ import { getTrending } from 'services/api';
 import { TrendSection, TrendTitle } from './Home.styled';
 import { Oval } from 'react-loader-spinner';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [isShowLoader, setIsShowLoader] = useState(false);
 
@@ -43,3 +43,5 @@ export const Home = () => {
     </TrendSection>
   );
 };
+
+export default Home;

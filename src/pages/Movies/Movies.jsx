@@ -4,7 +4,7 @@ import { Oval } from 'react-loader-spinner';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchMovie } from 'services/api';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isShowLoader, setIsShowLoader] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,3 +56,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

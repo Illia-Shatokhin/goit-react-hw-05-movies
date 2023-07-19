@@ -1,5 +1,6 @@
 import { MovieItem } from 'components/MovieItem/MovieItem';
 import { MovieList } from './MoviesList.styled';
+import PropTypes from 'prop-types';
 
 export const MoviesList = ({ movies, way }) => {
   return (
@@ -17,4 +18,9 @@ export const MoviesList = ({ movies, way }) => {
       })}
     </MovieList>
   );
+};
+
+MoviesList.propTypes = {
+  movies: PropTypes.array,
+  way: PropTypes.string,
 };
