@@ -5,6 +5,19 @@ import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
+// import { Oval } from 'react-loader-spinner';
+// <Oval
+//         height={100}
+//         width={100}
+//         color="#404bbf"
+//         wrapperStyle={{}}
+//         wrapperClass=""
+//         visible={true}
+//         ariaLabel="oval-loading"
+//         secondaryColor="#404bbf"
+//         strokeWidth={3}
+//         strokeWidthSecondary={3}
+//       />
 
 export const App = () => {
   return (

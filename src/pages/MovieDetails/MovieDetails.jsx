@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { MiniTitle, Movie, MovieTitle, Text } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
+  const location = useLocation();
+
+  const backLinkHref = useRef(location.state?.from ?? '/');
+
   let [movieDetails, setMovieDetails] = useState({});
+
   const { movieId } = useParams();
+
   useEffect(() => {
     const fetchMovieDetails = async id => {
       try {
@@ -20,6 +26,7 @@ export const MovieDetails = () => {
 
   return (
     <section>
+      <Link to={backLinkHref.current}>Back</Link>
       <Movie>
         <img
           src={
@@ -58,10 +65,14 @@ export const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: location }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>
